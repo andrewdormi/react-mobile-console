@@ -1,3 +1,1 @@
-/**
- * Created by andre on 25.09.2016.
- */
+export ReactMobileConsole from './src/container/ReactMobileConsole/ReactMobileConsole';

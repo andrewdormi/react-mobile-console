@@ -2,17 +2,18 @@
 var webpack = require('webpack');
 var path = require('path');
 var loaders = require('./webpack.loaders');
+var CopyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = {
     entry: './index.js',
     output: {
-        path: 'lib',
-        filename: 'react-mobile-console.js'
+        path: 'build',
+        filename: 'console.js'
     },
+    devtool: 'source-map',
     resolve: {
         modulesDirectories: [
-            'src',
-            'node_modules'
+            '../node_modules'
         ],
         extensions: ['', '.js', '.jsx']
     },
@@ -21,10 +22,8 @@ module.exports = {
     },
     plugins: [
         new webpack.NoErrorsPlugin(),
-        new webpack.DefinePlugin({
-            'process.env': {
-                NODE_ENV: '"production"'
-            }
-        })
+        new CopyWebpackPlugin([
+            {from: './index.html'}
+        ])
     ]
 };
